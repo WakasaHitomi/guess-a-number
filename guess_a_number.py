@@ -12,10 +12,21 @@ print("I'm thinking of a number from " + str(low) + " to " + str(high) + ".");
 guess = -1
 tries = 0
 
+# helper function
+
+def get_guess():
+    while True:
+        g = input("Take a guess: ")
+
+        if g.isnumeric():
+            g = int(g)
+            return g
+        else:
+            print("You must enter a number, but not in lettered format")
+            
 # play the game
 while guess != rand and tries < limit:
-    guess = input("Take a guess: ")
-    guess = int(guess)
+    guess = get_guess()
     
     if guess < rand:
         print("You guessed too low.")
