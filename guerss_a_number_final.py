@@ -2,8 +2,9 @@ import random
 
 # config
 low = 1
-high = 10
-limit = 4
+high = 100
+import math
+limit = math.log(100, 2)
 
 # helper functions
 def show_start_screen():
@@ -29,6 +30,9 @@ def get_guess():
 
 def pick_number():
     print("I'm thinking of a number from " + str(low) + " to " + str(high) +".")
+    print("You may have 7 guesses.")
+    print("You may only insert numbers in a numeric symbolled value rather than written out in letters.")
+    print("GoodLuck")
 
     return random.randint(low, high)
 
@@ -40,7 +44,7 @@ def check_guess(guess, rand):
 
 def show_result(guess, rand):
     if guess == rand:
-        print("You win!")
+        print("You win! It's about time you've done something right in your life.")
     else:
         print("You never fail to disappoint, do you? The number was " + str(rand) + ".")
 
