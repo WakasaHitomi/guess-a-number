@@ -45,8 +45,12 @@ def pick_number():
 def check_guess(guess, rand):
     if guess < rand:
         print("You guessed too low.")
+        print(" ")
+        print(" ")
     elif guess > rand:
         print("You guessed too high.")
+        print(" ")
+        print(" ")
 
 def show_result(guess, rand):
     if guess == rand:
