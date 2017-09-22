@@ -30,9 +30,13 @@ def get_guess():
 
 def pick_number():
     print("I'm thinking of a number from " + str(low) + " to " + str(high) +".")
+    print(" ")
     print("You may have 7 guesses.")
+    print(" ")
     print("You may only insert numbers in a numeric symbolled value rather than written out in letters.")
+    print(" ")
     print("GoodLuck")
+    print(" ")
 
     return random.randint(low, high)
 
@@ -51,6 +55,7 @@ def show_result(guess, rand):
 def play_again():
     while True:
         decision = input("Would you like to play again? (y/n) ")
+        decision = decision.lower()
 
         if decision == 'y' or decision == 'yes':
             return True
