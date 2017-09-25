@@ -5,7 +5,8 @@ low = 1
 high = 100
 import math
 
-limit_calc = (math.log(high, 2)
+limit_calc = (math.log(high, 2))
+    
 limit = math.ceil(limit_calc)
 
 # helper functions
@@ -33,7 +34,7 @@ def get_guess():
 def pick_number():
     print("I'm thinking of a number from " + str(low) + " to " + str(high) +".")
     print(" ")
-    print("You may have" + limit + " guesses.")
+    print("You may have 7 guesses.")
     print(" ")
     print("You may only insert numbers in a numeric symbolled value rather than written out in letters.")
     print(" ")
