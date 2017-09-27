@@ -2,7 +2,7 @@ import random
 
 # config
 low = 1
-high = 1000
+high = 100
 
 
 # helper functions
@@ -25,7 +25,10 @@ def pick_number():
     Ask the player to think of a number between low and high.
     Then  wait until the player presses enter.
     """
-    pass
+    print("Choose a number between 1 and 100, and I will try to guess yout number")
+    print(" ")
+    print(" ")
+    input("Press enter when you have choosen your number and you are ready to continue.")
 
 def check_guess(guess):
     """
@@ -35,12 +38,19 @@ def check_guess(guess):
              0 if the guess was correct
              1 if the guess was too high
     """
-
+    decision = input("How was my guess?      1= too high,   -1 = too low,   0 = I guessed it right.")
+    if input(-1): print("I have guessed too low.")
+            return def play(-1):
+    if input(0): print("I have won!")
+            return def play(0):
+    if input(1): print("I have guessed too high.")
+            return def play(1):
+            
 def show_result():
     """
     Says the result of the game. (The computer might always win.)
     """
-    pass
+    
 
 def play_again():
     while True:
@@ -65,11 +75,11 @@ def play():
         check = check_guess(guess)
 
         if check == -1:
-            # adjust current_low
-            pass
+            guess = current_low
+        
         elif check == 1:
-            # adjust current_high
-            pass
+           guess = current_high
+        
 
     show_result(guess, rand)
 
