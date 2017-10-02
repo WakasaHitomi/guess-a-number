@@ -11,13 +11,23 @@ high = 100
 
 # helper functions
 def show_start_screen():
-    print("*************************")
-    print("*  Guess a Number A.I!  *")
-    print("*************************")
+    print("   ______                        ___       _   __                __                 ___      ____")
+    print("  / ____/_  _____  __________   /   |     / | / /_  ______ ___  / /_  ___  _____   /   |    /  _/")
+    print(" / / __/ / / / _ \/ ___/ ___/  / /| |    /  |/ / / / / __ `__ \/ __ \/ _ \/ ___/  / /| |    / /  ")
+    print("/ /_/ / /_/ /  __(__  |__  )  / ___ |   / /|  / /_/ / / / / / / /_/ /  __/ /     / ___ |_ _/ /_  ")
+    print("\____/\__,_/\___/____/____/  /_/  |_|  /_/ |_/\__,_/_/ /_/ /_/_.___/\___/_/     /_/  |_(_)___(_) ")
+    print("                                                                                                 ")
 
 def show_credits():
-    pass
-    
+    print(" _____    _ _ _           _   _              ______                                          _      ")
+    print("|  ___|  | (_) |         | | | |          _  |  _  \                                        | |     ")
+    print("| |__  __| |_| |_ ___  __| | | |__  _   _(_) | | | |__ _ _ __ ___  _ __ ___   ___  _ __ __ _| |__   ")
+    print("|  __|/ _` | | __/ _ \/ _` | | '_ \| | | |   | | | / _` | '_ ` _ \| '_ ` _ \ / _ \| '__/ _` | '_ \  ")
+    print("| |__| (_| | | ||  __/ (_| | | |_) | |_| |_  | |/ / (_| | | | | | | | | | | | (_) | | | (_| | | | | ")
+    print("\____/\__,_|_|\__\___|\__,_| |_.__/ \__, (_) |___/ \__,_|_| |_| |_|_| |_| |_|\___/|_|  \__,_|_| |_| ")
+    print("                                     __/ |                                                          ")
+    print("                                    |___/         Final configuration date:                         ")
+
 def get_guess(current_low, current_high):
     """
     Return a truncated average of current low and high.
@@ -53,24 +63,28 @@ def check_guess(guess):
     print(" ")
     decision = decision.lower()
     
-    if decision == "too low":
+    if decision == "too low" or "l" or "lower":
         check = -1
         return check
-    if decision == "yes":
+    if decision == "yes" or "y" or "yeah" or "correct":
         print("I've guessed your number!")
         check = 0
         return check
-    if decision == "too high":
+    if decision == "too high" or "h" or "higher":
         check = 1
         return check
-    
+            else:
+                print("You have entered an invalid staterment I cannot understand.")
 def show_result():
     """
     Says the result of the game. (The computer might always win.)
     """
     #fix show results
-    print("The number you were thinking or was  !")
-    
+    print("The number you were thinking or was   !")
+
+#find a way to make guess apply outside of the play finction
+#maybe add guess in as a overall input
+    pass
 
 def play_again():
     while True:
