@@ -7,6 +7,11 @@ import random
 # config
 low = 1
 high = 100
+import math
+
+limit_calc = (math.log(high, 2))
+
+limit = math.ceil(limit_calc)
 
 
 # helper functions
@@ -54,37 +59,35 @@ def check_guess(guess):
              0 if the guess was correct
              1 if the guess was too high
     """
-    print(" ")
-    print(" ")
-    print(" ")
-    decision = input("Is the number you are thinking of " + str(guess) + "? Is it correct? Too high? Too low?")
-    print(" ")
-    print(" ")
-    print(" ")
-    decision = decision.lower()
-    
-    if decision == "too low" or "l" or "lower":
-        check = -1
-        return check
-    if decision == "yes" or "y" or "yeah" or "correct":
-        print("I've guessed your number!")
-        check = 0
-        return check
-    if decision == "too high" or "h" or "higher":
-        check = 1
-        return check
-            else:
-                print("You have entered an invalid staterment I cannot understand.")
-def show_result():
+    while True:
+        print()
+        print()
+        decision = input("Is the number you are thinking of " + str(guess) + "? Is it correct? Too high? Too low?")
+        print()
+        print()
+        decision = decision.lower()
+        
+        if decision in ["too low", "l", "lower"]:
+            check = -1
+            return check
+        elif decision == in ["yes", "y", "yeah", "correct"]:
+            print("I've guessed your number!")
+            check = 0
+            return check
+        elif decision == "too high" or "h" or "higher":
+            check = 1
+            return check
+        else:
+            print("You have entered an invalid staterment I cannot understand.")
+def show_result(guess):
     """
     Says the result of the game. (The computer might always win.)
     """
     #fix show results
-    print("The number you were thinking or was   !")
+    print("The number you were thinking of was " + str(guess) + "!")
 
-#find a way to make guess apply outside of the play finction
-#maybe add guess in as a overall input
-    pass
+    #find a way to make guess apply outside of the play finction
+    #maybe add guess in as a overall input
 
 def play_again():
     while True:
@@ -102,10 +105,12 @@ def play():
     current_low = low
     current_high = high
     check = -1
+
+    tries = 0
     
     pick_number()
     
-    while check != 0:
+    while check != 0 and tries < limit:
         guess = get_guess(current_low, current_high)
         check = check_guess(guess)
 
@@ -114,9 +119,10 @@ def play():
         
         elif check == 1:
            current_high = int(guess)
-        
+           
+        tries += 1
 
-    show_result()
+    show_result(guess)
 
 
 # Game starts running here
