@@ -48,10 +48,12 @@ def pick_number():
     print("Choose a number between " + str(low) + " and " + str(high) + ", and I will try to guess yout number")
     print(" ")
     print(" ")
-    print("After I have guessed tell me if it was: too high, too low, or correct")
-    input("Press enter when you have choosen your number and you are ready to continue.")
+    print("After I have guessed tell me if it was: too high, too low, or correct.")
+    print("Before we begin, what is your name?")
+    name = input()
+    input("Press enter when you have choosen your number and you are ready to continue " + str(name) + ".")
 
-def check_guess(guess):
+def check_guess(guess, name):
     """
     Computer will ask if guess was too high, low, or correct.
 
@@ -62,7 +64,7 @@ def check_guess(guess):
     while True:
         print()
         print()
-        decision = input("Is the number you are thinking of " + str(guess) + "? Is it correct? Too high? Too low?")
+        decision = input("Is the number you are thinking of " + str(guess) + ", " + str(name) + "? Is it correct? Too high? Too low?")
         print()
         print()
         decision = decision.lower()
@@ -70,28 +72,29 @@ def check_guess(guess):
         if decision in ["too low", "l", "lower"]:
             check = -1
             return check
-        elif decision == in ["yes", "y", "yeah", "correct"]:
+        elif decision in ["yes", "y", "yeah", "correct"]:
             print("I've guessed your number!")
             check = 0
             return check
-        elif decision == "too high" or "h" or "higher":
+        elif decision in ["too high", "h", "higher"]:
             check = 1
             return check
         else:
-            print("You have entered an invalid staterment I cannot understand.")
-def show_result(guess):
+            print( str(name) + ",you have entered an invalid staterment I cannot understand.")
+def show_result(guess, check, name):
     """
     Says the result of the game. (The computer might always win.)
     """
-    #fix show results
-    print("The number you were thinking of was " + str(guess) + "!")
 
-    #find a way to make guess apply outside of the play finction
-    #maybe add guess in as a overall input
+    if check == 0:
+        print("The number you were thinking of was " + str(guess) + "!")
+    else:
+        print("Looks like I lost... Sorry " + str(name) + ". Would you let me try again?")
+        
 
-def play_again():
+def play_again(name):
     while True:
-        decision = input("Would you like to play again? (y/n) ")
+        decision = input("Would you like to play again, " + str(name) + " ? (y/n) ")
         decision = decision.lower()
 
         if decision == 'y' or decision == 'yes':
@@ -122,7 +125,7 @@ def play():
            
         tries += 1
 
-    show_result(guess)
+    show_result(guess, check, name)
 
 
 # Game starts running here
