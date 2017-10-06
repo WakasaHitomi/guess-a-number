@@ -31,7 +31,7 @@ def show_credits():
     print("| |__| (_| | | ||  __/ (_| | | |_) | |_| |_  | |/ / (_| | | | | | | | | | | | (_) | | | (_| | | | | ")
     print("\____/\__,_|_|\__\___|\__,_| |_.__/ \__, (_) |___/ \__,_|_| |_| |_|_| |_| |_|\___/|_|  \__,_|_| |_| ")
     print("                                     __/ |                                                          ")
-    print("                                    |___/         Final configuration date:                         ")
+    print("                                    |___/         Final configuration date: 10/6/17                 ")
 
 def get_guess(current_low, current_high):
     """
@@ -45,15 +45,18 @@ def pick_number():
     Ask the player to think of a number between low and high.
     Then  wait until the player presses enter.
     """
-    print("Choose a number between " + str(low) + " and " + str(high) + ", and I will try to guess yout number")
+    print("Choose a number between " + str(low) + " and " + str(high) + ", and I will try to guess your number")
     print(" ")
     print(" ")
     print("After I have guessed tell me if it was: too high, too low, or correct.")
+
+def get_name():
     print("Before we begin, what is your name?")
     name = input()
-    input("Press enter when you have choosen your number and you are ready to continue " + str(name) + ".")
+    input("Press enter when you have choosen your number and you are ready to continue " + str(name) + ". I will try to guess it in 7 tries.")
+    return name
 
-def check_guess(guess, name):
+def check_guess(guess, name, tries, limit):
     """
     Computer will ask if guess was too high, low, or correct.
 
@@ -65,7 +68,7 @@ def check_guess(guess, name):
         print()
         print()
         decision = input("Is the number you are thinking of " + str(guess) + ", " + str(name) + "? Is it correct? Too high? Too low?")
-        print()
+        print(" Guess " + str(tries) + " of " + str(limit) + " is " + str(guess) + ".")
         print()
         decision = decision.lower()
         
@@ -81,13 +84,14 @@ def check_guess(guess, name):
             return check
         else:
             print( str(name) + ",you have entered an invalid staterment I cannot understand.")
-def show_result(guess, check, name):
+def show_result(guess, check, name,tries):
     """
     Says the result of the game. (The computer might always win.)
     """
 
     if check == 0:
         print("The number you were thinking of was " + str(guess) + "!")
+        print("I have guessed your number in " + str(tries) + " tries!")
     else:
         print("Looks like I lost... Sorry " + str(name) + ". Would you let me try again?")
         
@@ -104,7 +108,7 @@ def play_again(name):
         else:
             print("I don't understand. Please enter 'yes' or 'no'.")
 
-def play():
+def play(name):
     current_low = low
     current_high = high
     check = -1
@@ -112,10 +116,11 @@ def play():
     tries = 0
     
     pick_number()
+
     
     while check != 0 and tries < limit:
         guess = get_guess(current_low, current_high)
-        check = check_guess(guess)
+        check = check_guess(guess, name, tries, limit)
 
         if check == -1:
             current_low = int(guess)
@@ -125,17 +130,18 @@ def play():
            
         tries += 1
 
-    show_result(guess, check, name)
+    show_result(guess, check, name, tries)
 
 
 # Game starts running here
 show_start_screen()
+name = get_name()
 
 playing = True
 
 while playing:
-    play()
-    playing = play_again()
+    play(name)
+    playing = play_again(name)
 
 show_credits()
 
